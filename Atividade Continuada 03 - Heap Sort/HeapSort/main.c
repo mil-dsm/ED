@@ -183,13 +183,13 @@ int partition(int A[], int l, int r){
 }
 
 // Algoritmo Quick Sort recebe como entrada um vetor de inteiros A[n]
-// com tamanho n = fim - ini + 1 elementos e ordena-os em ordem crescente.
-// Parâmetros: vetor A[n], índice inicial ini e índice final fim.
-void QuickSort(int A[], int ini, int fim){
-    if(ini<fim){
-        int j = partition(A, ini, fim);
-        QuickSort(A, ini, j-1);
-        QuickSort(A, j+1, fim);
+// com tamanho n = r - l + 1 elementos e ordena-os em ordem crescente.
+// Parâmetros: vetor A[n], índice inicial l e índice final r.
+void QuickSort(int A[], int l, int r){
+    if(l<r){
+        int j = partition(A, l, r);
+        QuickSort(A, l, j-1);
+        QuickSort(A, j+1, r);
     }
 }
 
