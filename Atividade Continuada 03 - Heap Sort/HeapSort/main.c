@@ -24,9 +24,13 @@ Matrícula: 581180*/
  * Implementacao de dos algoritmos:
  */
 
-// Função Heapify (complementar a Heap Sort)
-// Promete colocar o maior elemento no topo da "árvore"
-// Retorno: vetor com o elemento de maior valor no início deste
+// Função Heapify é uma função auxiliar do algoritmo Heap Sort que promete
+// manter a propriedade de heap máximo em uma subárvore com raiz no índice 'i'.
+// Para isso, compara o nó pai com seus filhos e garante que o maior valor
+// fique no topo da subárvore. Caso necessário, realiza trocas e aplica
+// recursivamente a mesma verificação na posição afetada.
+// Entrada: vetor 'A[0...n-1]', tamanho 'n' do heap e índice 'i'.
+// Saída: vetor com o maior elemento da subárvore movido para a posição correta.
 void Heapify(int A[], int n, int i){
     int maior = i;
     int esq = 2 * i + 1;
@@ -45,16 +49,25 @@ void Heapify(int A[], int n, int i){
     }
 }
 
+// Função ConstroiHeap é responsável por transformar um vetor desordenado em um
+// heap máximo, estrutura na qual cada nó é maior que seus filhos. Essa etapa é
+// fundamental para o funcionamento do Heap Sort, pois organiza parcialmente o
+// vetor antes da ordenação final.
+// Entrada: vetor 'A[0...n-1]' e tamanho 'n'.
+// Saída: vetor reorganizado em forma de heap máximo.
 void ConstroiHeap(int A[], int n){
     for (int i=n/2-1; i>=0; i--){
         Heapify(A, n, i);
     }
 }
 
-// Algoritmo Heap Sort
-// Promete ordenar um vetor A[0...n-1] de tamanho n, por meio de
-// divisão e conquista e recursão
-// Entrada: vetor A[] e tamanho[]
+// Algoritmo Heap Sort é uma função que promete ordenar um vetor A[0...n-1] de
+// forma crescente, utilizando a estrutura de heap máximo. O maior elemento é
+// colocado no final do vetor a cada iteração, e o heap é reajustado para manter
+// sua propriedade. Esse processo é repetido até que o vetor esteja totalmente
+// ordenado.
+// Entrada: tamanho 'n' do vetor e vetor 'A[0...n-1]'.
+// Saída: vetor ordenado em ordem crescente.
 void HeapSort(int n, int A[]){
     ConstroiHeap(A, n);
     for (int i=n-1; i>0; i--){
