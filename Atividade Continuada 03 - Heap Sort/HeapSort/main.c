@@ -449,7 +449,7 @@ int main()
 		fprintf(ofs3, "%d %Lf\n", tamanho_vetor, duracao_media_insertion);
 	}
 	
-	fclose(ofs3); // Fecha arquivo de resultados do InsertionSort
+	fclose(ofs3); // Fecha arquivo de resultados do Insertion Sort
 	// ------------------------------------------------------------
 	
 
@@ -601,6 +601,6 @@ int main()
 		fprintf(ofs6, "%d %Lf\n", tamanho_vetor, duracao_media_quick);
 	}
 	
-	fclose(ofs6); // Fecha arquivo de resultados do QuickSort
+	fclose(ofs6); // Fecha arquivo de resultados do Quick Sort
 	return 0;
 }
