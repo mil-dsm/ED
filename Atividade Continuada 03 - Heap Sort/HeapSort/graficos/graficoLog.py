@@ -9,10 +9,7 @@ import matplotlib.pyplot as plt
 
 # Caminho dos arquivos
 diretorio_script = os.path.dirname(os.path.abspath(__file__))
-arquivo_bubble = os.path.join(diretorio_script, "../resultados/resultadoBubble.txt")
 arquivo_heap = os.path.join(diretorio_script, "../resultados/resultadoHeap.txt")
-arquivo_insertion = os.path.join(diretorio_script, "../resultados/resultadoInsertion.txt")
-arquivo_selection = os.path.join(diretorio_script, "../resultados/resultadoSelection.txt")
 arquivo_merge = os.path.join(diretorio_script, "../resultados/resultadoMerge.txt")
 arquivo_quick = os.path.join(diretorio_script, "../resultados/resultadoQuick.txt")
 arquivo_saida = os.path.join(diretorio_script, "comparativoAlgoritmos.png")
@@ -31,25 +28,12 @@ def ler_dados(caminho):
     return tamanhos, tempos
 
 # Ler os dados
-t_bubble, tempo_bubble = ler_dados(arquivo_bubble)
 t_heap, tempo_heap = ler_dados(arquivo_heap)
-t_insertion, tempo_insertion = ler_dados(arquivo_insertion)
-t_selection, tempo_selection = ler_dados(arquivo_selection)
 t_merge, tempo_merge = ler_dados(arquivo_merge)
 t_quick, tempo_quick = ler_dados(arquivo_quick)
 
 # Criar o gráfico
 plt.figure(figsize=(12,7))
-
-plt.plot(
-    t_bubble, tempo_bubble,
-    color='#1f77b4',   # azul
-    marker='o',
-    markersize=6,
-    linestyle='-',
-    linewidth=2,
-    label='Bubble Sort'
-)
 
 plt.plot(
     t_heap, tempo_heap,
@@ -59,26 +43,6 @@ plt.plot(
     linestyle='-',
     linewidth=2,
     label='Heap Sort'
-)
-
-plt.plot(
-    t_insertion, tempo_insertion,
-    color='#2ca02c',   # laranja
-    marker='^',        # quadrado
-    markersize=6,
-    linestyle='-',
-    linewidth=2,
-    label='Insertion Sort'
-)
-
-plt.plot(
-    t_selection, tempo_selection,
-    color='#d62728',   # laranja
-    marker='v',        # quadrado
-    markersize=6,
-    linestyle='-',
-    linewidth=2,
-    label='Selection Sort'
 )
 
 plt.plot(
