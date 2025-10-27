@@ -12,7 +12,7 @@ diretorio_script = os.path.dirname(os.path.abspath(__file__))
 arquivo_bubble = os.path.join(diretorio_script, "../resultados/resultadoBubble.txt")
 arquivo_insertion = os.path.join(diretorio_script, "../resultados/resultadoInsertion.txt")
 arquivo_selection = os.path.join(diretorio_script, "../resultados/resultadoSelection.txt")
-arquivo_saida = os.path.join(diretorio_script, "comparativoAlgoritmos.png")
+arquivo_saida = os.path.join(diretorio_script, "comparativoAlgoritmos_n2.png")
 
 # Função para ler arquivo com duas colunas
 def ler_dados(caminho):
@@ -68,7 +68,7 @@ plt.plot(
 # Estilo do gráfico
 plt.xlabel("Tamanho do Vetor", fontsize=14, fontweight='bold')
 plt.ylabel("Microssegundos", fontsize=14, fontweight='bold')
-plt.title("Comparativo Algoritmos", fontsize=16, fontweight='bold')
+plt.title("Comparativo — Algoritmos O(n²)", fontsize=16, fontweight='bold')
 plt.grid(True, linestyle='--', alpha=0.6)
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
