@@ -47,7 +47,7 @@ plt.plot(
 
 plt.plot(
     t_insertion, tempo_insertion,
-    color='#2ca02c',   # laranja
+    color='#2ca02c',   # vermelho
     marker='^',        # quadrado
     markersize=6,
     linestyle='-',
@@ -57,7 +57,7 @@ plt.plot(
 
 plt.plot(
     t_selection, tempo_selection,
-    color='#d62728',   # laranja
+    color='#d62728',   # roxo
     marker='v',        # quadrado
     markersize=6,
     linestyle='-',
@@ -68,16 +68,16 @@ plt.plot(
 # Estilo do gráfico
 plt.xlabel("Tamanho do Vetor", fontsize=14, fontweight='bold')
 plt.ylabel("Microssegundos", fontsize=14, fontweight='bold')
-plt.title("Comparativo — Algoritmos O(n²)", fontsize=16, fontweight='bold')
+plt.title("Algoritmos O(n²)", fontsize=16, fontweight='bold')
 plt.grid(True, linestyle='--', alpha=0.6)
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 plt.legend(fontsize=12)
 
 # Forçar notação científica no eixo Y com '1e7'
-import matplotlib.ticker as ticker
 plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
-plt.gca().yaxis.get_offset_text().set_fontsize(12)  # deixa o '1e7' legível
+plt.gca().yaxis.get_offset_text().set_fontsize(10)
+plt.gca().yaxis.get_offset_text().set_position((-0.07, 0))  # posiciona "1e7" mais próximo do eixo
 
 # Salvar e mostrar
 # plt.ticklabel_format(style='plain', axis='y')
