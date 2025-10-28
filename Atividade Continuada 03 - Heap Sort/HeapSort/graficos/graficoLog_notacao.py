@@ -36,51 +36,48 @@ t_quick, tempo_quick = ler_dados(arquivo_quick)
 plt.figure(figsize=(12,7))
 
 plt.plot(
-    t_heap, tempo_heap,
-    color='#ff7f0e',   # laranja
-    marker='s',        # quadrado
-    markersize=6,
-    linestyle='-',
-    linewidth=2,
-    label='Heap Sort'
-)
-
-plt.plot(
     t_merge, tempo_merge,
-    color='#9467bd',   # laranja
-    marker='>',        # quadrado
-    markersize=6,
+    color='#ff7f0e',   # laranja
+    marker='s',
+    markersize=5,
     linestyle='-',
     linewidth=2,
-    label='Merge Sort'
+    label='MergeSort (O(n log n))'
 )
 
 plt.plot(
     t_quick, tempo_quick,
-    color='#8c564b',   # laranja
-    marker='<',        # quadrado
-    markersize=6,
+    color='#2ca02c',   # verde
+    marker='^',
+    markersize=5,
     linestyle='-',
     linewidth=2,
-    label='Quick Sort'
+    label='QuickSort (O(n log n))'
+)
+
+plt.plot(
+    t_heap, tempo_heap,
+    color='#d62728',   # vermelho
+    marker='v',
+    markersize=5,
+    linestyle='-',
+    linewidth=2,
+    label='HeapSort (O(n log n))'
 )
 
 # Estilo do gráfico
 plt.xlabel("Tamanho do Vetor", fontsize=14, fontweight='bold')
 plt.ylabel("Microssegundos", fontsize=14, fontweight='bold')
-plt.title("Comparativo — Algoritmos O(n log n)", fontsize=16, fontweight='bold')
+plt.title("Algoritmos O(n log n)", fontsize=16, fontweight='bold')
 plt.grid(True, linestyle='--', alpha=0.6)
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 plt.legend(fontsize=12)
 
-# 🔹 Forçar notação científica no eixo Y
-import matplotlib.ticker as ticker
-plt.gca().yaxis.set_major_formatter(ticker.ScalarFormatter(useMathText=True))
-plt.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
+# Escala logarítmica no eixo Y (como na imagem)
+plt.yscale("log")
 
 # Salvar e mostrar
-# plt.ticklabel_format(style='plain', axis='y')
 plt.tight_layout()
 plt.savefig(arquivo_saida, dpi=300)
 plt.show()
