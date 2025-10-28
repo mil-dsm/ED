@@ -35,31 +35,28 @@ t_quick, tempo_quick = ler_dados(arquivo_quick)
 # Criar o gráfico
 plt.figure(figsize=(12,7))
 
+# 🔹 Merge Sort
 plt.plot(
     t_merge, tempo_merge,
     color='#ff7f0e',   # laranja
-    marker='s',
-    markersize=5,
     linestyle='-',
     linewidth=2,
     label='MergeSort (O(n log n))'
 )
 
+# 🔹 Quick Sort
 plt.plot(
     t_quick, tempo_quick,
     color='#2ca02c',   # verde
-    marker='^',
-    markersize=5,
     linestyle='-',
     linewidth=2,
     label='QuickSort (O(n log n))'
 )
 
+# 🔹 Heap Sort
 plt.plot(
     t_heap, tempo_heap,
-    color='#d62728',   # vermelho
-    marker='v',
-    markersize=5,
+    color='#9467bd',   # roxo
     linestyle='-',
     linewidth=2,
     label='HeapSort (O(n log n))'
@@ -74,8 +71,11 @@ plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 plt.legend(fontsize=12)
 
-# Escala logarítmica no eixo Y (como na imagem)
+# 🔸 Escala logarítmica no eixo Y
 plt.yscale("log")
+
+# 🔸 Formatação científica leve no eixo Y (10², 10³, 10⁴)
+plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
 
 # Salvar e mostrar
 plt.tight_layout()
