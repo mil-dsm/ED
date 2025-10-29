@@ -6,6 +6,7 @@
 
 import os
 import matplotlib.pyplot as plt
+from matplotlib.ticker import LogFormatterMathtext
 
 # Caminho dos arquivos
 diretorio_script = os.path.dirname(os.path.abspath(__file__))
@@ -60,11 +61,9 @@ plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 plt.legend(fontsize=12)
 
-# 🔸 Escala logarítmica no eixo Y
+# Escala logarítmica no eixo Y e notação matemática (10³, 10⁴, etc)
 plt.yscale("log")
-
-# 🔸 Formatação científica leve no eixo Y (10², 10³, 10⁴)
-plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+plt.gca().yaxis.set_major_formatter(LogFormatterMathtext())
 
 # Salvar e mostrar
 plt.tight_layout()
