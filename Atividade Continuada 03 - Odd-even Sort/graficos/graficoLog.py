@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 
 # Caminho dos arquivos
 diretorio_script = os.path.dirname(os.path.abspath(__file__))
-arquivo_heap = os.path.join(diretorio_script, "../resultados/resultadoHeap.txt")
 arquivo_merge = os.path.join(diretorio_script, "../resultados/resultadoMerge.txt")
 arquivo_quick = os.path.join(diretorio_script, "../resultados/resultadoQuick.txt")
 arquivo_saida = os.path.join(diretorio_script, "comparativoAlgoritmos_nlogn.png")
@@ -28,7 +27,6 @@ def ler_dados(caminho):
     return tamanhos, tempos
 
 # Ler os dados
-t_heap, tempo_heap = ler_dados(arquivo_heap)
 t_merge, tempo_merge = ler_dados(arquivo_merge)
 t_quick, tempo_quick = ler_dados(arquivo_quick)
 
@@ -51,15 +49,6 @@ plt.plot(
     linestyle='-',
     linewidth=2,
     label='QuickSort (O(n log n))'
-)
-
-# 🔹 Heap Sort
-plt.plot(
-    t_heap, tempo_heap,
-    color='#9467bd',   # roxo
-    linestyle='-',
-    linewidth=2,
-    label='HeapSort (O(n log n))'
 )
 
 # Estilo do gráfico
