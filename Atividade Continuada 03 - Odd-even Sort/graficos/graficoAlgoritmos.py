@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 # Caminho dos arquivos
 diretorio_script = os.path.dirname(os.path.abspath(_file_))
 arquivo_bubble = os.path.join(diretorio_script, "../resultados/resultadoBubble.txt")
-arquivo_heap = os.path.join(diretorio_script, "../resultados/resultadoHeap.txt")
+arquivo_oddeven = os.path.join(diretorio_script, "../resultados/resultadoOddeven.txt")
 arquivo_insertion = os.path.join(diretorio_script, "../resultados/resultadoInsertion.txt")
 arquivo_selection = os.path.join(diretorio_script, "../resultados/resultadoSelection.txt")
 arquivo_merge = os.path.join(diretorio_script, "../resultados/resultadoMerge.txt")
@@ -32,14 +32,13 @@ def ler_dados(caminho):
 
 # Ler os dados
 t_bubble, tempo_bubble = ler_dados(arquivo_bubble)
-t_heap, tempo_heap = ler_dados(arquivo_heap)
+t_oddeven, tempo_oddeven = ler_dados(arquivo_oddeven)
 t_insertion, tempo_insertion = ler_dados(arquivo_insertion)
 t_selection, tempo_selection = ler_dados(arquivo_selection)
 t_merge, tempo_merge = ler_dados(arquivo_merge)
 t_quick, tempo_quick = ler_dados(arquivo_quick)
 
 # Converter segundos para microssegundos (caso os dados estejam em segundos)
-tempo_heap = [t * 1e6 for t in tempo_heap]
 tempo_merge = [t * 1e6 for t in tempo_merge]
 tempo_quick = [t * 1e6 for t in tempo_quick]
 
@@ -57,13 +56,13 @@ plt.plot(
 )
 
 plt.plot(
-    t_heap, tempo_heap,
+    t_oddeven, tempo_oddeven,
     color='#ff7f0e',   # laranja
     marker='s',        # quadrado
     markersize=6,
     linestyle='-',
     linewidth=2,
-    label='Heap Sort'
+    label='Odd-even Sort'
 )
 
 plt.plot(
