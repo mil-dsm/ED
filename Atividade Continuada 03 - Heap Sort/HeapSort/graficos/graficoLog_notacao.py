@@ -6,12 +6,13 @@
 
 import os
 import matplotlib.pyplot as plt
+from matplotlib.ticker import LogFormatterMathtext
 
 # Caminho dos arquivos
 diretorio_script = os.path.dirname(os.path.abspath(__file__))
-arquivo_heap = os.path.join(diretorio_script, "../resultados/resultadoHeap.txt")
 arquivo_merge = os.path.join(diretorio_script, "../resultados/resultadoMerge.txt")
 arquivo_quick = os.path.join(diretorio_script, "../resultados/resultadoQuick.txt")
+arquivo_heap = os.path.join(diretorio_script, "../resultados/resultadoHeap.txt")
 arquivo_saida = os.path.join(diretorio_script, "comparativoAlgoritmos_nlogn.png")
 
 # Função para ler arquivo com duas colunas
@@ -28,7 +29,6 @@ def ler_dados(caminho):
     return tamanhos, tempos
 
 # Ler os dados
-t_heap, tempo_heap = ler_dados(arquivo_heap)
 t_merge, tempo_merge = ler_dados(arquivo_merge)
 t_quick, tempo_quick = ler_dados(arquivo_quick)
 
@@ -38,7 +38,7 @@ plt.figure(figsize=(12,7))
 # 🔹 Merge Sort
 plt.plot(
     t_merge, tempo_merge,
-    color='#ff7f0e',   # laranja
+    color='#9467bd',     # roxo
     linestyle='-',
     linewidth=2,
     label='MergeSort (O(n log n))'
@@ -47,19 +47,10 @@ plt.plot(
 # 🔹 Quick Sort
 plt.plot(
     t_quick, tempo_quick,
-    color='#2ca02c',   # verde
+    color='#8c564b',     # marrom
     linestyle='-',
     linewidth=2,
     label='QuickSort (O(n log n))'
-)
-
-# 🔹 Heap Sort
-plt.plot(
-    t_heap, tempo_heap,
-    color='#9467bd',   # roxo
-    linestyle='-',
-    linewidth=2,
-    label='HeapSort (O(n log n))'
 )
 
 # Estilo do gráfico
@@ -71,11 +62,9 @@ plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 plt.legend(fontsize=12)
 
-# 🔸 Escala logarítmica no eixo Y
+# Escala logarítmica no eixo Y e notação matemática (10³, 10⁴, etc)
 plt.yscale("log")
-
-# 🔸 Formatação científica leve no eixo Y (10², 10³, 10⁴)
-plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+plt.gca().yaxis.set_major_formatter(LogFormatterMathtext())
 
 # Salvar e mostrar
 plt.tight_layout()

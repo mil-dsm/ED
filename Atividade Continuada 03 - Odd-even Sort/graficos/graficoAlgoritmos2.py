@@ -1,16 +1,10 @@
-# Algoritmos de ordenação
-# Disciplina: Estruturas de Dados
-# Turma: 01A
-# Nome: Milena de Sousa Mesquita
-# Matrícula: 581180
-
 import os
 import matplotlib.pyplot as plt
 
 # Caminho dos arquivos
 diretorio_script = os.path.dirname(os.path.abspath(__file__))
 arquivo_bubble = os.path.join(diretorio_script, "../resultados/resultadoBubble.txt")
-arquivo_heap = os.path.join(diretorio_script, "../resultados/resultadoHeap.txt")
+arquivo_oddeven = os.path.join(diretorio_script, "../resultados/resultadoOddeven.txt")
 arquivo_insertion = os.path.join(diretorio_script, "../resultados/resultadoInsertion.txt")
 arquivo_selection = os.path.join(diretorio_script, "../resultados/resultadoSelection.txt")
 arquivo_merge = os.path.join(diretorio_script, "../resultados/resultadoMerge.txt")
@@ -32,11 +26,18 @@ def ler_dados(caminho):
 
 # Ler os dados
 t_bubble, tempo_bubble = ler_dados(arquivo_bubble)
-t_heap, tempo_heap = ler_dados(arquivo_heap)
+t_oddeven, tempo_oddeven = ler_dados(arquivo_oddeven)
 t_insertion, tempo_insertion = ler_dados(arquivo_insertion)
 t_selection, tempo_selection = ler_dados(arquivo_selection)
 t_merge, tempo_merge = ler_dados(arquivo_merge)
 t_quick, tempo_quick = ler_dados(arquivo_quick)
+
+tempo_bubble   = [t * 1e6 for t in tempo_bubble]
+tempo_oddeven  = [t * 1e6 for t in tempo_oddeven]
+tempo_insertion = [t * 1e6 for t in tempo_insertion]
+tempo_selection = [t * 1e6 for t in tempo_selection]
+tempo_merge    = [t * 1e6 for t in tempo_merge]
+tempo_quick    = [t * 1e6 for t in tempo_quick]
 
 # Criar o gráfico
 plt.figure(figsize=(12,7))
@@ -52,13 +53,13 @@ plt.plot(
 )
 
 plt.plot(
-    t_heap, tempo_heap,
+    t_oddeven, tempo_oddeven,
     color='#ff7f0e',     # laranja
     marker='s',          # marcador quadrado
     markersize=6,        # tamanho do marcador
     linestyle='-',       # linha sólida
     linewidth=2,         # espessura da linha
-    label='Heap Sort'
+    label='Odd-even Sort'
 )
 
 plt.plot(
@@ -104,25 +105,13 @@ plt.plot(
 # Estilo do gráfico
 plt.xlabel("Tamanho do Vetor", fontsize=14, fontweight='bold')
 plt.ylabel("Microssegundos", fontsize=14, fontweight='bold')
-plt.title("Comparativo de Desempenho dos Algoritmos de Ordenação", fontsize=16, fontweight='bold')
-plt.grid(True, which='both', linestyle='--', alpha=0.6)
+plt.title("Comparativo dos Algoritmos de Ordenação", fontsize=16, fontweight='bold')
+plt.grid(True, linestyle='--', alpha=0.6)
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
+plt.legend(fontsize=12)
 
-# Legenda fora da área, sem cortar
-plt.legend(fontsize=12, loc='upper left', bbox_to_anchor=(1,1))
-
-# Escala log com rótulos 10^k
-from matplotlib.ticker import LogLocator, LogFormatterMathtext, NullFormatter
-ax = plt.gca()
-ax.set_yscale('log')
-
-# Ticks maiores em potências de 10, menores entre elas
-ax.yaxis.set_major_locator(LogLocator(base=10))
-ax.yaxis.set_major_formatter(LogFormatterMathtext())  # mostra 10^3, 10^4...
-ax.yaxis.set_minor_locator(LogLocator(base=10, subs=range(2,10)))
-ax.yaxis.set_minor_formatter(NullFormatter())
-
+# Salvar e mostrar
 plt.tight_layout()
-plt.savefig(arquivo_saida, dpi=300, bbox_inches='tight')
+plt.savefig(arquivo_saida, dpi=300)
 plt.show()

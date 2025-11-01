@@ -31,38 +31,37 @@ def ler_dados(caminho):
 t_bubble, tempo_bubble = ler_dados(arquivo_bubble)
 t_insertion, tempo_insertion = ler_dados(arquivo_insertion)
 t_selection, tempo_selection = ler_dados(arquivo_selection)
-t_oddeven, tempo_oddeven = ler_dados(arquivo_oddeven)
 
 # Criar o gráfico
 plt.figure(figsize=(12,7))
 
 plt.plot(
     t_bubble, tempo_bubble,
-    color='#1f77b4',   # azul
-    marker='o',
-    markersize=6,
-    linestyle='-',
-    linewidth=2,
+    color='#1f77b4',     # azul
+    marker='o',          # marcador circular
+    markersize=6,        # tamanho do marcador
+    linestyle='-',       # linha sólida
+    linewidth=2,         # espessura da linha
     label='Bubble Sort'
 )
 
 plt.plot(
     t_insertion, tempo_insertion,
-    color='#2ca02c',   # verde
-    marker='^',
-    markersize=6,
-    linestyle='-',
-    linewidth=2,
+    color='#2ca02c',     # verde
+    marker='^',          # marcador triangular
+    markersize=6,        # tamanho do marcador
+    linestyle='-',       # linha sólida
+    linewidth=2,         # espessura da linha
     label='Insertion Sort'
 )
 
 plt.plot(
     t_selection, tempo_selection,
-    color='#d62728',   # vermelho
-    marker='v',
-    markersize=6,
-    linestyle='-',
-    linewidth=2,
+    color='#d62728',     # vermelho
+    marker='v',          # marcador triangular invertido
+    markersize=6,        # tamanho do marcador
+    linestyle='-',       # linha sólida
+    linewidth=2,         # espessura da linha
     label='Selection Sort'
 )
 
