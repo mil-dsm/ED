@@ -115,22 +115,27 @@ int main() {
     int N, E;
     scanf("%d%d", &N, &E);
     int v[N];
-
-    for(int i = 0; i < N; i++)
+    // Preenche o vetor com valores de 1 a N
+    for(int i = 0; i < N; i++) {
         v[i] = i + 1;
-
+    }
+    
     int vivos = N, espada = E - 1;
     while(vivos > 1) {
         printf("[ ");
         for(int i = 0; i < vivos; i++) {
             if(v[i] == 0) continue;
-            if(i == espada)
+            if(i == espada) {
+                // Marca quem está com a espada
                 printf("%d> ", v[i]);
-            else
+            } else {
                 printf("%d ", v[i]);
+            }
         }
         printf("]\n");
+        // Índice da pessoa a ser eliminada (circular)
         int alvo = (espada + 1) % vivos;
+        // Remove o alvo e recebe o índice do próximo portador da espada
         espada = matar(v, &vivos, alvo);
     }
     printf("[ %d> ]\n", v[espada]);
@@ -138,6 +143,8 @@ int main() {
     return 0;
 }
 
+// Remove o elemento na posição pos do vetor,
+// atualiza o tamanho e devolve o índice do próximo portador da espada
 int matar(int elementos[], int *size, int pos) {
     for(int i = pos; i < *size-1; i++)
         elementos[i] = elementos[i+1];

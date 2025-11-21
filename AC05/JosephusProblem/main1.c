@@ -115,22 +115,23 @@ int main() {
     int N, E;
     scanf("%d%d", &N, &E);
     int v[N];
-
+    // Preenche o vetor com valores de 1 a N
     for(int i = 0; i < N; i++) {
         v[i] = i + 1;
     }
 
     int vivos = N, venc = E-1;
     while(vivos > 1) {
-
         // Vetor formatado
         printf("[ ");
         for(int i = 0; i < N; i++) {
             if(v[i] == 0) continue;
-            if(i == venc)
+            if(i == venc) {
+                // Marca quem está com a espada
                 printf("%d> ", v[i]);
-            else
+            } else {
                 printf("%d ", v[i]);
+            }
         }
         printf("]\n");
 
@@ -143,12 +144,13 @@ int main() {
     return 0;
 }
 
-// Funcao para matar o alvo
-// Recebe o vetor, o tamanho n, e o indice x de quem tem a espada, e devolve o indice do proximo elemento com a espada
+// Elimina a pessoa imediatamente após x (em ordem circular)
+// Retorna o índice do próximo vivo que receberá a espada
 int matar(int v[], int n, int x) {
-    int iAlvo = (x + 1) % n; // Calculo do condenado a morrer dentro dos limites do vetor
+    // Índice da próxima pessoa a morrer (circular)
+    int iAlvo = (x + 1) % n;
     while(v[iAlvo] == 0) {
-        iAlvo = (iAlvo + 1) % n; // Enquando o alvo estiver morto, o calculo eh refeito para encontrar um vivo
+        iAlvo = (iAlvo + 1) % n; // Faz o calculo ate encontrar um vivo alvo vivo
     }
     v[iAlvo] = 0; // Mata o alvo
 
