@@ -18,13 +18,13 @@
 struct node {
     int data;
     struct node *prev;
-    struct nod *next;
+    struct node *next;
 };
 
 typedef struct node Node; // Renomeando tipo
 
 // Cria lista vazia
-Node* dlist_create() {
+Node* dList_create() {
     Node *novo = (Node*)malloc(sizeof(Node));
     novo->next = novo;
     novo->prev = novo;
@@ -44,7 +44,7 @@ void dList_free(Node *head) {
     free(head);
 }
 
-// // Insere um elemento no final da lista
+// Insere um elemento no final da lista
 void dList_push_back(Node *head, int val) {
     Node *novo = (Node*)malloc(sizeof(Node)); // Aloca novo no
     novo->data = val;
@@ -57,14 +57,13 @@ void dList_push_back(Node *head, int val) {
 }
 
 // Insere um elemento no inicio da lista
-void dList_push_front(Node* head, int val) {
+void dList_push_front(Node *head, int val) {
     Node *novo = (Node*)malloc(sizeof(Node));
     novo->data = val;
     novo->next = head->next;
     novo->prev = head;
     head->next->prev = novo;
     head->next = novo;
-    return novo;
 }
 
 // Remove o ultimo elemento da lista
@@ -84,6 +83,7 @@ Node* dList_pop_front(Node* head) {
     head->next->prev = head;
     free(temp);
 }
+
 int dList_size(Node *head) {
     Node *aux = head->next;
     int size = 0;
@@ -132,8 +132,6 @@ void dList_clear(Node *head) {
     // }
 }
 
-   //  ;-; 2x1=w errou 0 na prova :O w = 2 acertou, 10 na prova ebaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-
 // // Remover um elemento que esteja num indice especificado
 // void dList_remove(Node *head, size_t index) {
 //     Node *atual = head->next; // Aponta para o primeiro elemento da lista
@@ -167,13 +165,11 @@ void dList_remove_all(Node *head, int k) {
     //         Node *temp = aux;
     //         aux = aux->next;
     //         temp->prev->next = aux;
-    //         aux->prev = temp->prev;aaaaaaaaaaaaaaaaaaaaaaaaaa <- euabcdefghi bbbbbbbbbbbbbbbbbbbb <- eukkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-    //         free(temp);
-    //     }
-    // }
+    //         aux->prev = temp->prev;
 }
-//nota 1000000000000000000000000000000000000000000
-void dList_bolhasortida(Node *head) {
+
+// Realiza o algoritmo BubbleSort
+void dList_bubblesort(Node *head) {
     for(Node *i = head->next; i != head; i = i->next) {
         for(Node *j = head->prev; j != i; j = j->prev) {
             if(j->data < j->prev->data) {
@@ -184,5 +180,3 @@ void dList_bolhasortida(Node *head) {
         }
     }
 }
-
-// Insertion Sort
